@@ -4,7 +4,8 @@ env:
 on:
   push:
     branches:
-      - master
+      - release
+
 jobs:
   publish:
     timeout-minutes: 30
@@ -37,27 +38,35 @@ jobs:
       - name: Publish to NPM
         run: |
           npm config set '//registry.npmjs.org/:_authToken' "${{ secrets.NPM_TOKEN }}"
-          # 获取最新的 commit hash
-          LATEST_COMMIT_ID=$(git rev-parse --verify HEAD)
-          # 截取前 8 位字符串
-          COMMIT_HASH=${LATEST_COMMIT_ID:0:8}
-          # 构建 beta 版本号
-          BETA_VERSION="${CURRENT_VERSION}-beta-${COMMIT_HASH}"
           # 更新所有的版本号
-          lerna version ${BETA_VERSION} --exact --no-push --force-publish --yes
-          echo "publish version ${BETA_VERSION}"
+          lerna version ${CURRENT_VERSION} --exact --no-push --force-publish --yes
+          echo "publish version ${CURRENT_VERSION}"
           # @see https://github.com/lerna/lerna/blob/main/commands/publish/README.md#--dist-tag-tag
-          NODE_OPTIONS="--max_old_space_size=4096" lerna publish from-git --yes --dist-tag beta
+          NODE_OPTIONS="--max_old_space_size=4096" lerna publish from-git --yes
 
       - name: Latest Blocklet Server CLI Version
         run: |
           npm info lerna-test-for-skypesky-copy
           npm info lerna-test-for-skypesky
 
+      - name: Commit Readme
+        run: |
+          echo ${CURRENT_VERSION} >> README.md
+          git add README.md
+          git commit "[skip ci]: update readme.md"
+          git checkout .
+
+      - name: Push Readme
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
+
       - name: 'Create Dev Branch'
         run: |
           # git checkout .
-          git checkout -b dev
-          set +e && git push origin dev
+          git checkout master
+          set +e && git push origin master
           exit 0
+
      
