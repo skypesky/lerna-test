@@ -25,7 +25,7 @@ jobs:
           npm config set '//registry.npmjs.org/:_authToken' "${{ secrets.NPM_TOKEN }}"
           node tools/update-beta-package-version.js
           # @see https://github.com/lerna/lerna/blob/main/commands/publish/README.md#--dist-tag-tag
-          NODE_OPTIONS="--max_old_space_size=4096" lerna publish from-git --yes --dist-tag beta
+          NODE_OPTIONS="--max_old_space_size=4096" lerna publish --yes --dist-tag beta
 
       - name: Latest Blocklet Server CLI Version
         run: |
