@@ -39,7 +39,7 @@ jobs:
           BETA_VERSION="${CURRENT_VERSION}-beta-${COMMIT_HASH}"
           # @see https://github.com/lerna/lerna/blob/main/commands/publish/README.md#--dist-tag-tag
           lerna version ${BETA_VERSION} --exact --no-push --force-publish --yes
-          NODE_OPTIONS="--max_old_space_size=4096" lerna publish --yes --dist-tag beta
+          NODE_OPTIONS="--max_old_space_size=4096" lerna publish --from-git --yes --dist-tag beta
 
       - name: Latest Blocklet Server CLI Version
         run: |
