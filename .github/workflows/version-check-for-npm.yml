@@ -1,4 +1,4 @@
-name: publish-beta-packages
+name: version-check-for-npm
 env:
   ACTIONS_ALLOW_UNSECURE_COMMANDS: true
 on: [push]
