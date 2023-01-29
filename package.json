@@ -97,6 +97,7 @@
     "access": "public"
   },
   "dependencies": {
-    "fs-extra": "^11.1.0"
+    "fs-extra": "^11.1.0",
+    "git-repo-info": "^2.1.1"
   }
 }

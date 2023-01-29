@@ -1,10 +1,8 @@
 const { cwd } = require("process");
-
 const { readFileSync } = require("fs-extra");
-
 const { join } = require("path");
-
 const { WorkSpaces } = require("./lib/work-spaces");
+const getRepoInfo = require("git-repo-info");
 
 (async () => {
   try {
@@ -12,17 +10,12 @@ const { WorkSpaces } = require("./lib/work-spaces");
       .toString()
       .trim();
 
-    const date = new Date();
+    const commitHash = getRepoInfo()?.sha?.substring(0, 8);
 
-    const time = `${date.getFullYear()}-${
-      date.getMonth() + 1 < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1
-    }-${date.getDate()}-${date.getHours()}-${date.getMinutes()}-${date.getMilliseconds()}`;
-
-    const newVersion = `${currentVersion}-beta-${time}`;
+    const newVersion = `${currentVersion}-beta-${commitHash}`;
 
     const workspace = new WorkSpaces({
       rootDir: cwd(),
-
       workSpaces: ["packages"],
     });
 
