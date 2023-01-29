@@ -1,7 +1,7 @@
 const { cwd } = require("process");
 const { readFileSync } = require("fs-extra");
 const { join } = require("path");
-const { WorkSpaces } = require("./lib/work-spaces");
+const { WorkSpaces } = require("./libs/work-spaces");
 const getRepoInfo = require("git-repo-info");
 
 (async () => {
