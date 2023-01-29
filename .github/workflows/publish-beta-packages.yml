@@ -42,6 +42,7 @@ jobs:
           BETA_VERSION="${CURRENT_VERSION}-beta-${COMMIT_HASH}"
           # 更新所有的版本号
           lerna version ${BETA_VERSION} --exact --no-push --force-publish --yes
+          echo "publish version ${BETA_VERSION}"
           # @see https://github.com/lerna/lerna/blob/main/commands/publish/README.md#--dist-tag-tag
           NODE_OPTIONS="--max_old_space_size=4096" lerna publish from-git --yes --dist-tag beta
 
