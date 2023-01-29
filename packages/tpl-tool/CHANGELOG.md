@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.1.0-beta-c7792da3.0](https://github.com/skypesky/lerna-test/compare/lerna-test-for-skypesky@0.1.0...lerna-test-for-skypesky@0.1.0-beta-c7792da3.0) (2023-01-29)
+
+
+### Features
+
+* init v8 ([5b88517](https://github.com/skypesky/lerna-test/commit/5b885178b4135d029c1e9037d06bd0f3fa5729e5))
+
+
+
+
+
 # 0.1.0 (2023-01-29)
 
 
