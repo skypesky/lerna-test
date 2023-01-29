@@ -17,8 +17,8 @@ jobs:
 
       - name: Install dependencies
         run: |
+          lerna bootstrap
           git checkout .
-
 
       - name: Publish to NPM
         run: |
