@@ -1,12 +1,7 @@
 name: publish-beta-packages
 env:
   ACTIONS_ALLOW_UNSECURE_COMMANDS: true
-on:
-  pull_request:
-    master
-  push:
-    branches:
-      - master
+on: [push]
 jobs:
   publish:
     timeout-minutes: 30
