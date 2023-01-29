@@ -1,0 +1,43 @@
+name: publish-beta-packages
+env:
+  ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+on:
+  pull_request:
+    master
+  push:
+    branches:
+      - master
+jobs:
+  publish:
+    timeout-minutes: 30
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: master
+          token: ${{ secrets.GIT_HUB_TOKEN }}
+
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: |
+          git checkout .
+
+
+      - name: Publish to NPM
+        run: |
+          npm config set '//registry.npmjs.org/:_authToken' "${{ secrets.NPM_TOKEN }}"
+          cat package.json | grep version
+          # @see https://github.com/lerna/lerna/blob/main/commands/publish/README.md#--dist-tag-tag
+          NODE_OPTIONS="--max_old_space_size=4096" lerna publish from-git --yes --dist-tag beta
+
+      - name: Latest Blocklet Server CLI Version
+        run: |
+          npm info lerna-test-for-skypesky-copy
+          npm info lerna-test-for-skypesky
+
+     
