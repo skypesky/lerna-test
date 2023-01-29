@@ -1,0 +1,29 @@
+{
+  "name": "@lerna-test/<%= name %>",
+  "version": "0.0.1",
+  "description": "<%= description %>",
+  "author": "<%= username %> <<%= email %>>",
+  "homepage": "",
+  "license": "MIT",
+  "main": "src/index.js",
+  "directories": {
+    "lib": "src",
+    "test": "__tests__"
+  },
+  "files": [
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/ "
+  },
+  "dependencies": {
+  }
+}
