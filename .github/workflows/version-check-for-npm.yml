@@ -35,7 +35,7 @@ jobs:
           COMPARE=$(compare-versions-cli $CURRENT_VERSION $LATEST_VERSION)
           if [ $COMPARE -le 0 ] 
           then
-              echo "CURRENT_VERSION($CURRENT_VERSION) Greater than LATEST_VERSION($LATEST_VERSION)"
+              echo "CURRENT_VERSION($CURRENT_VERSION) must greater than LATEST_VERSION($LATEST_VERSION)"
               exit 1
           fi
 
