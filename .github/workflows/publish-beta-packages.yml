@@ -48,13 +48,15 @@ jobs:
           echo "publish version ${BETA_VERSION}"
           # @see https://github.com/lerna/lerna/blob/main/commands/publish/README.md#--dist-tag-tag
           NODE_OPTIONS="--max_old_space_size=4096" lerna publish from-git --yes --dist-tag beta
-
+          git checkout .
+          git status
+          git log
+          
 
       - name: Latest Blocklet Server CLI Version
         run: |
           npm info lerna-test-for-skypesky-copy
           npm info lerna-test-for-skypesky
-          git checkout .
 
       - name: Push changes
         uses: ad-m/github-push-action@master
@@ -68,6 +70,7 @@ jobs:
         run: |
           git checkout .
           git status
+          git log
           git checkout -b dev
           set +e && git push origin dev
           exit 0
