@@ -39,8 +39,8 @@ jobs:
         run: |
           npm config set '//registry.npmjs.org/:_authToken' "${{ secrets.NPM_TOKEN }}"
           # 更新所有的版本号
-          lerna version ${CURRENT_VERSION} --exact --no-push --force-publish --yes
           echo "publish version ${CURRENT_VERSION}"
+          lerna version ${CURRENT_VERSION} --exact --no-push --force-publish --yes
           # @see https://github.com/lerna/lerna/blob/main/commands/publish/README.md#--dist-tag-tag
           NODE_OPTIONS="--max_old_space_size=4096" lerna publish from-git --yes
 
