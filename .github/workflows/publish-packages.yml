@@ -73,16 +73,8 @@ jobs:
         run: |
           git branch
           git branch -r
-<<<<<<< HEAD
-          # git pull
-          # git branch
-          # git branch -r
-          git pull origin master
-          git checkout master
-=======
           git checkout master
           git pull origin master
->>>>>>> origin/release
           git rebase origin/release
           git log
           set +e && git push origin master
