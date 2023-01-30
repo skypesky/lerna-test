@@ -77,7 +77,7 @@ jobs:
           git pull origin master
           git checkout master
           git rebase release
-          set +e && git push origin master
+          set +e && git push origin master -f
           exit 0
 
      
