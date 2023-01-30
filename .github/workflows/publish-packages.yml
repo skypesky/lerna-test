@@ -1,4 +1,4 @@
-name: publish-beta-packages
+name: publish-packages
 env:
   ACTIONS_ALLOW_UNSECURE_COMMANDS: true
 on:
@@ -7,7 +7,7 @@ on:
       - release
 
 jobs:
-  publish:
+  publish-packages:
     timeout-minutes: 30
     runs-on: ubuntu-latest
     steps:
