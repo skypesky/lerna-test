@@ -82,6 +82,7 @@ jobs:
           git pull origin master
           git log
           echo "---rebase---"
+          git checkout master
           git rebase release
           git log
           set +e && git push origin master
