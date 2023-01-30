@@ -49,10 +49,18 @@ jobs:
           # @see https://github.com/lerna/lerna/blob/main/commands/publish/README.md#--dist-tag-tag
           NODE_OPTIONS="--max_old_space_size=4096" lerna publish from-git --yes --dist-tag beta
 
+
       - name: Latest Blocklet Server CLI Version
         run: |
           npm info lerna-test-for-skypesky-copy
           npm info lerna-test-for-skypesky
+          git checkout .
+
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
 
       - name: 'Create Dev Branch'
         run: |
