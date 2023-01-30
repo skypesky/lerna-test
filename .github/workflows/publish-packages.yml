@@ -73,12 +73,15 @@ jobs:
         run: |
           git branch 
           git branch -r
-          echo "---"
+          echo "---release--"
           git checkout release
           git pull origin release
           git log
-          echo "---"
+          echo "---master---"
           git checkout master
+          git pull origin master
+          git log
+          echo "---rebase---"
           git rebase release
           git log
           set +e && git push origin master
