@@ -53,12 +53,9 @@ jobs:
 
       - name: Push Readme
         run: |
-          git log
-          echo "ABC" >> README.md
-          cat README.md
+          echo $CURRENT_VERSION >> README.md
           git add README.md
-          git status 
-          git commit "[skip ci]: update readme.md"
+          git commit -m "[skip ci]: update readme.md"
 
       - name: Push Readme
         uses: ad-m/github-push-action@master
