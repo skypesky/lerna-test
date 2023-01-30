@@ -48,11 +48,8 @@ jobs:
           echo "publish version ${BETA_VERSION}"
           # @see https://github.com/lerna/lerna/blob/main/commands/publish/README.md#--dist-tag-tag
           NODE_OPTIONS="--max_old_space_size=4096" lerna publish from-git --yes --dist-tag beta
-          git checkout .
-          git status
-          git log
+          git reset --hard $LATEST_COMMIT_ID
           
-
       - name: Latest Blocklet Server CLI Version
         run: |
           npm info lerna-test-for-skypesky-copy
