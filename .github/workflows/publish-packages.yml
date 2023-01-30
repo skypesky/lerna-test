@@ -49,12 +49,11 @@ jobs:
           npm info lerna-test-for-skypesky-copy
           npm info lerna-test-for-skypesky
 
-      - name: Commit Readme
+      - name: Push Readme
         run: |
           echo ${CURRENT_VERSION} >> README.md
           git add README.md
           git commit "[skip ci]: update readme.md"
-          git checkout .
 
       - name: Push Readme
         uses: ad-m/github-push-action@master
@@ -62,10 +61,10 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
 
-      - name: 'Create Dev Branch'
+      - name: 'Rebase master branch'
         run: |
-          # git checkout .
           git checkout master
+          git rebase release
           set +e && git push origin master
           exit 0
 
