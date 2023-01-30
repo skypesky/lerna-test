@@ -2,7 +2,7 @@ name: publish-packages
 env:
   ACTIONS_ALLOW_UNSECURE_COMMANDS: true
 on:
-  pull_request:
+  push:
     branches:
       - release
 
