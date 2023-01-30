@@ -73,12 +73,13 @@ jobs:
         run: |
           git branch
           git branch -r
-          git pull
-          git branch
-          git branch -r
+          # git pull
+          # git branch
+          # git branch -r
+          git pull origin master
           git checkout master
-          git log
           git rebase origin/release
+          git log
           set +e && git push origin master
           exit 0
 
