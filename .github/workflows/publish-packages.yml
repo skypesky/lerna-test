@@ -64,10 +64,15 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
 
+      - name: Checkout
+        uses: actions/checkout@v3
+        with: 
+          ref: master
+
       - name: 'Rebase master branch'
         run: |
-          git branch
           git checkout master
+          git branch
           git log
           git rebase release
           set +e && git push origin master
