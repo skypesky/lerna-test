@@ -66,7 +66,9 @@ jobs:
 
       - name: 'Rebase master branch'
         run: |
+          git branch
           git checkout master
+          git log
           git rebase release
           set +e && git push origin master
           exit 0
