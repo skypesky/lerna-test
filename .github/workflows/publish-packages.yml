@@ -71,11 +71,14 @@ jobs:
 
       - name: 'Rebase master branch'
         run: |
-          git branch
+          git branch 
           git branch -r
+          echo "---"
+          git checkout release
+          git log
+          echo "---"
           git checkout master
-          git pull origin master
-          git rebase origin/release
+          git rebase release
           git log
           set +e && git push origin master
           exit 0
