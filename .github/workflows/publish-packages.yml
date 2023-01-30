@@ -75,6 +75,7 @@ jobs:
           git branch -r
           echo "---"
           git checkout release
+          git pull origin release
           git log
           echo "---"
           git checkout master
