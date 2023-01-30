@@ -51,7 +51,7 @@ jobs:
           git checkout .
           git status
           git log
-
+          
 
       - name: Latest Blocklet Server CLI Version
         run: |
