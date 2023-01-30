@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.0.6-beta-0b3da8ed (2023-01-30)
+
+**Note:** Version bump only for package lerna-test-for-skypesky
+
+
+
+
+
 ## [0.0.1](https://github.com/skypesky/lerna-test/compare/lerna-test-for-skypesky@0.1.0-beta-c7792da3.0...lerna-test-for-skypesky@0.0.1) (2023-01-29)
 
 **Note:** Version bump only for package lerna-test-for-skypesky
