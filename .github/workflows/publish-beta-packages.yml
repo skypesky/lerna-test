@@ -55,8 +55,6 @@ jobs:
           npm info lerna-test-for-skypesky-copy
           npm info lerna-test-for-skypesky
 
-      # @see https://github.com/marketplace/actions/github-push
-      # @see https://stackoverflow.com/a/58393457
       - name: 'Create Dev Branch'
         run: |
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
