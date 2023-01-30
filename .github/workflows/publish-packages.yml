@@ -12,7 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+        with: 
+          ref: release
 
       - name: Setup node
         uses: actions/setup-node@v2
@@ -51,8 +53,11 @@ jobs:
 
       - name: Push Readme
         run: |
-          echo ${CURRENT_VERSION} >> README.md
+          git log
+          echo "ABC" >> README.md
+          cat README.md
           git add README.md
+          git status 
           git commit "[skip ci]: update readme.md"
 
       - name: Push Readme
