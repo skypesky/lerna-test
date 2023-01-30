@@ -66,11 +66,14 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v3
-        # with: 
-        #   ref: master
+        with: 
+          ref: master
 
       - name: 'Rebase master branch'
         run: |
+          git branch
+          git branch -r
+          git pull
           git branch
           git branch -r
           git checkout master
