@@ -3,12 +3,12 @@ env:
   ACTIONS_ALLOW_UNSECURE_COMMANDS: true
 
 on:
-  push:
+  pull_request:
     branches:
       - release
 
 jobs:
-  publish:
+  version-check-for-npm:
     timeout-minutes: 30
     runs-on: ubuntu-latest
     steps:
