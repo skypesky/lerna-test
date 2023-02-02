@@ -61,17 +61,8 @@ jobs:
       - name: Push Readme
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GIT_HUB_TOKEN }}
           branch: ${{ github.ref }}
-
-      - name: Create Release Pull Request
-        uses: peter-evans/create-pull-request@v4
-        with:
-            commit-message: release merge to master
-            title: release merge to master
-            body: release merge to master
-            base: master
-            branch: release 
             
       - name: 'Rebase master branch'
         run: |
@@ -81,7 +72,22 @@ jobs:
           git pull origin master
           git checkout master
           git rebase release
-            
+          
+      - name: Push master branch
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GIT_HUB_TOKEN }}
+          branch: master
+          
+      - name: Create Release Pull Request
+        uses: peter-evans/create-pull-request@v4
+        with:
+            commit-message: release merge to master
+            title: release merge to master
+            body: release merge to master
+            base: master
+            branch: release 
+
 #       - name: Checkout
 #         uses: actions/checkout@v3
 #         with: 
@@ -96,9 +102,5 @@ jobs:
 #           git checkout master
 #           git rebase release
 
-#       - name: Push master branch
-#         uses: ad-m/github-push-action@master
-#         with:
-#           github_token: ${{ secrets.GITHUB_TOKEN }}
-#           branch: master
+
      
