@@ -73,6 +73,15 @@ jobs:
             base: master
             branch: release 
             
+      - name: 'Rebase master branch'
+        run: |
+          git checkout release
+          git pull origin release
+          git checkout master
+          git pull origin master
+          git checkout master
+          git rebase release
+            
 #       - name: Checkout
 #         uses: actions/checkout@v3
 #         with: 
