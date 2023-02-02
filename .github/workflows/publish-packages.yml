@@ -77,7 +77,10 @@ jobs:
           git pull origin master
           git checkout master
           git rebase release
-          set +e && git push origin master -f
-          exit 0
 
+      - name: Push master branch
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: master
      
