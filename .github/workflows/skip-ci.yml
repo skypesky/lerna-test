@@ -1,4 +1,4 @@
-name: skip-ci-when-title-has-wip
+name: skip-ci
 on:
   pull_request:
     types:
