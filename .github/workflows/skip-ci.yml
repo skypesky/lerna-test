@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: WIP Blocker
-        uses: rafaelbeckel/wip-blocker
+        uses: rafaelbeckel/wip-blocker@master
 
   cancel:
     name: auto-cancellation-running-action
