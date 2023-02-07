@@ -17,7 +17,7 @@ jobs:
           # Only return if PR is still open
           filterOutClosed: true
           
-      - name: Check WIP in PR Title
+      - name: Check WIP in PR Title2
         uses: embano1/wip@v1
         with:
           # this is also the default value
