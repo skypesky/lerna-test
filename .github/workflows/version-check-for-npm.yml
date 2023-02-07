@@ -20,12 +20,15 @@ jobs:
     runs-on: ubuntu-latest
     if: "! contains(toJSON(github.event.commits.*.message), '[skip ci]') "
     steps:
-      - name: WIP Check
-        uses: tim-actions/wip-check@master
+      - name: Check WIP in PR Title
+        uses: embano1/wip@v1
         with:
-          labels: '["do-not-merge", "wip", "rfc"]'
-          keywords: '["WIP", "wip", "RFC", "rfc"]'
-          
+          # this is also the default value
+          title: "${{ github.event.pull_request.title }}"
+
+          # only matches PRs where title is "WIP" only
+          regex: "^WIP$" 
+
       - name: WIP Blocker
         uses: rafaelbeckel/wip-blocker@main        
         with:
