@@ -10,7 +10,7 @@ jobs:
     if: " ! contains(toJSON(github.event.commits.*.message), '[skip ci]')"
     steps:
       - name: WIP Blocker
-        uses: rafaelbeckel/wip-blocker@master
+        uses: rafaelbeckel/wip-blocker@main
 
       - uses: fauguste/auto-cancellation-running-action@0.1.4
         with:
