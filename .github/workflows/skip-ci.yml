@@ -5,7 +5,7 @@ on:
 
 jobs:
   skip-ci-when-include-wip:
-    timeout-minutes: 30
+    name: "skip-ci-when-include-wip"
     runs-on: ubuntu-latest
     steps:
       - name: WIP Blocker
