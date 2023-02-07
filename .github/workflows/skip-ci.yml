@@ -4,17 +4,14 @@ on:
 
 
 jobs:
-  skip-ci-when-include-wip:
+  cancel:
+    name: auto-cancellation-running-action
     runs-on: ubuntu-latest
+    if: " ! contains(toJSON(github.event.commits.*.message), '[skip ci]')"
     steps:
       - name: WIP Blocker
         uses: rafaelbeckel/wip-blocker@master
 
-  cancel:
-    name: auto-cancellation-running-action
-    runs-on: ubuntu-latest
-    if: " ! contains(toJSON(github.event.commits.*.message), '[skip ci]') || ! contains(toJSON(github.event.pull_request.title), 'WIP') "
-    steps:
       - uses: fauguste/auto-cancellation-running-action@0.1.4
         with:
           githubToken: ${{ secrets.GIT_HUB_TOKEN }}
