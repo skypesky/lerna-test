@@ -9,12 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     if: " ! contains(toJSON(github.event.commits.*.message), '[skip ci]')"
     steps:
-      - name: WIP Check
-        uses: tim-actions/wip-check@master
-        with:
-          labels: '["do-not-merge", "wip", "rfc"]'
-          keywords: '["WIP", "wip", "RFC", "rfc"]'
-          
+      - uses: wip/action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: WIP Blocker
         uses: rafaelbeckel/wip-blocker@main
 
