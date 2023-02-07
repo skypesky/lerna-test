@@ -18,7 +18,7 @@ jobs:
   version-check-for-npm:
     timeout-minutes: 30
     runs-on: ubuntu-latest
-    if: "! contains(toJSON(github.event.commits.*.message), '[skip ci]')"
+    if: "! contains(toJSON(github.event.commits.*.message), '[skip ci]') "
     steps:
       - name: WIP Blocker
         uses: rafaelbeckel/wip-blocker@main        
