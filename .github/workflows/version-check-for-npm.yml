@@ -21,8 +21,10 @@ jobs:
     if: "! contains(toJSON(github.event.commits.*.message), '[skip ci]')"
     steps:
       - name: WIP Blocker
-        uses: rafaelbeckel/wip-blocker@main
-        
+        uses: rafaelbeckel/wip-blocker@main        
+        with:
+          - keywords: 'wip'
+
       - name: Checkout
         uses: actions/checkout@v3
 
