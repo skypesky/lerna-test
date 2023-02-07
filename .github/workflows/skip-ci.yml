@@ -16,7 +16,7 @@ jobs:
           title: "${{ github.event.pull_request.title }}"
 
           # only matches PRs where title is "WIP" only
-          regex: "^WIP$" 
+          regex: "^WIP" 
 
       - uses: fauguste/auto-cancellation-running-action@0.1.4
         with:
