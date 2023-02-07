@@ -9,12 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     if: " ! contains(toJSON(github.event.commits.*.message), '[skip ci]')"
     steps:
-      - uses: wip/action@v1
+      - name: Block if WIP PR
+        uses: ParanoidBeing/action-wip-blocker@v0.1.1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            BLOCK_LIST: "WIP|do not merge|backend not live"
 
-      - name: WIP Blocker
-        uses: rafaelbeckel/wip-blocker@main
 
       - uses: fauguste/auto-cancellation-running-action@0.1.4
         with:
