@@ -1,8 +1,5 @@
 name: skip-ci
-on:
-  pull_request:
-    types: [opened, synchronize, reopened, edited]
-  push:
+on: [push]
 
 
 jobs:
