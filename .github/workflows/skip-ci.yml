@@ -11,7 +11,8 @@ jobs:
     steps:
       - name: "hello"
         run: |
-          echo "${{ github.event.pull_request.title }}"
+          echo ${{toJSON(github.*)}}
+          echo "${{ github.* }}"
           echo ${{ github.event.pull_request.title }}
       - name: WIP Check
         uses: tim-actions/wip-check@master
