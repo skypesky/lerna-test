@@ -10,12 +10,11 @@ on:
 
 jobs:
   skip-ci-when-include-wip:
-    timeout-minutes: 30
+    name: "skip-ci-when-include-wip"
     runs-on: ubuntu-latest
     steps:
       - name: WIP Blocker
         uses: rafaelbeckel/wip-blocker
-
   version-check-for-npm:
     timeout-minutes: 30
     runs-on: ubuntu-latest
