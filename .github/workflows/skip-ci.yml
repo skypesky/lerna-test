@@ -1,5 +1,7 @@
 name: skip-ci
-on: 
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
   [push]
 
 
