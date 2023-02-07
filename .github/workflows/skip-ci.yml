@@ -31,16 +31,15 @@ jobs:
           prClosedAt: ${{ steps.PR.outputs.pr_closed_at }}
           prLabel: ${{ steps.PR.outputs.pr_labels }}
 
-      - name: "hello"
-        run: |
-          echo "${{ github.event.*.* }}"
-          echo ${{ github.event.pull_request.title }}
-          echo ${{toJSON(github.event.*.*)}}
-      - name: WIP Check
-        uses: tim-actions/wip-check@master
+          
+      - name: Check WIP in PR Title
+        uses: embano1/wip@v1
         with:
-          labels: '["do-not-merge", "wip", "rfc"]'
-          keywords: '["WIP", "wip", "RFC", "rfc"]'
+          # this is also the default value
+          title: "${{ steps.PR.outputs.pr_title }}"
+
+          # only matches PRs where title is "WIP" only
+          regex: "^WIP" 
 
       - uses: fauguste/auto-cancellation-running-action@0.1.4
         with:
