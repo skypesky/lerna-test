@@ -12,17 +12,13 @@ jobs:
         id: PR
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          # Verbose setting SHA when using Pull_Request event trigger to fix #16
           sha: ${{ github.event.pull_request.head.sha }}
-          # Only return if PR is still open
           filterOutClosed: true
           
       - name: Check WIP in PR Title2
         uses: embano1/wip@v1
         with:
-          # this is also the default value
           title: "${{ steps.PR.outputs.pr_title }}"
-          # only matches PRs where title is "WIP" only
           regex: "^WIP" 
 
       - uses: fauguste/auto-cancellation-running-action@0.1.4
