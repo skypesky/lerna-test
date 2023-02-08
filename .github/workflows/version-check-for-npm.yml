@@ -5,14 +5,35 @@ env:
 on:
   pull_request:
     branches:
+      - master
       - release
 
 jobs:
+  skip-ci-when-include-wip:
+    runs-on: ubuntu-latest
+    steps:
+      - name: WIP Blocker
+        uses: rafaelbeckel/wip-blocker
+
   version-check-for-npm:
     timeout-minutes: 30
     runs-on: ubuntu-latest
-    if: "! contains(toJSON(github.event.commits.*.message), '[skip ci]')"
+    if: "! contains(toJSON(github.event.commits.*.message), '[skip ci]') "
     steps:
+      - name: Check WIP in PR Title
+        uses: embano1/wip@v1
+        with:
+          # this is also the default value
+          title: "${{ github.event.pull_request.title }}"
+
+          # only matches PRs where title is "WIP" only
+          regex: "^WIP$" 
+
+      - name: WIP Blocker
+        uses: rafaelbeckel/wip-blocker@main        
+        with:
+          - keywords: 'wip'
+
       - name: Checkout
         uses: actions/checkout@v3
 
